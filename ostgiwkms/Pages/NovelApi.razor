@@ -5,25 +5,49 @@
 <head>
     <meta charset="utf-8" />
     <title>Novel Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/app.css" />
 </head>
 <body style="background-color:#2E006C; color:white; background-size:cover;">
     <div class="novelaiBody">
-        <h3>Settings</h3>
+        <div class="hoverTrigger" style="position: relative; display: inline-block;">
+            Settings
+            <div class="hiddenSettings" style="display: none; position: absolute; background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; z-index: 1">
+                <p>
+                    <h3>Temperature</h3>
+
+                    <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+
+                    <h3>Minimum Length</h3>
+                    <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+
+                    <h3>Maximum Length</h3>
+                    <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+                </p>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var hoverTrigger = document.querySelector('.hoverTrigger');
+                var hiddenContent = document.querySelector('.hiddenSettings');
+
+                hoverTrigger.addEventListener('mouseover', function () {
+                    hiddenContent.style.display = 'block';
+                });
+
+                hoverTrigger.addEventListener('mouseout', function () {
+                    hiddenContent.style.display = 'none';
+                });
+            });
+        </script>
+
+
         <div>
-            <h3>Temperature</h3>
-
-            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
-
-            <h3>Minimum Length</h3>
-            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
-
-            <h3>Maximum Length</h3>
-            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+            <p>Your prompt: @inputText</p>
+            <p>Response: "@generatedStream"</p>
         </div>
 
-        <p>Your prompt: @inputText</p>
-        <p>Response: "@generatedStream"</p>
+        <div style="margin: 100px"></div>
 
         <h3>Text Input</h3>
         <div class="textinput">
@@ -39,7 +63,7 @@
     private string inputText { get; set; }
     private double temperatureValue = 0.25;
     private int minLength = 10;
-    private int maxLength = 100;
+    private int maxLength = 1000;
     private string API_NOVELAI = "https://api.novelai.net/";
     private string API_KEY = "";
     private string placeholder = "oRGZjZE7QO7ltvuvg3iR6YvkKwkikzbLk2vdveunPtJU-qc92h_jZBKGG-bRfVto";
@@ -58,8 +82,14 @@
         }
     }
 
-    private async Task GenerateStream()
+    /*private async Task GenerateStream()
     {
         generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);
+    }*/
+
+    private async Task GenerateStream()
+    {
+        generatedStream = await GenerationRequest.GenerateNovel(inputText, temperatureValue, minLength, maxLength);
     }
+
 }

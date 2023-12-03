@@ -8,6 +8,17 @@
     background-color: darkviolet;
 }
 
+#hiddenSetting {
+    display: none;
+}
+
+#hoverTrigger:hover + #hiddenSetting {
+    display: block
+}
+#hoverTrigger:hover ~ #hiddenSetting {
+    display: none
+}
+
 .textinput {
     position: fixed;
     bottom: 0;
