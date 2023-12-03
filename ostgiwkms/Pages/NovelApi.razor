@@ -1,0 +1,65 @@
+﻿@page "/Generate-Novel-Stream"
+@inject ostgiwkms.Services.TextGenerationRequest GenerationRequest
+@inject ostgiwkms.Services.AuthService AuthService
+
+<head>
+    <meta charset="utf-8" />
+    <title>Novel Generator</title>
+    <link rel="stylesheet" href="~/css/app.css" />
+</head>
+<body style="background-color:#2E006C; color:white; background-size:cover;">
+    <div>
+        <h3>Settings</h3>
+        <div>
+            <h3>Temperature</h3>
+
+            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+
+            <h3>Minimum Length</h3>
+            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+
+            <h3>Maximum Length</h3>
+            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+        </div>
+
+        <h3>Text Input</h3>
+        <div style="padding-right: 50px;">
+            <label for="textbox">Enter Prompt:</label>
+            <input class="textBox" id="textbox" type="text" @bind="inputText" />
+            <button class="generateStream" @onclick="GenerateStream">Generate</button>
+        </div>
+
+        <p>Your prompt: @inputText</p>
+        <p>Response: "@generatedStream"</p>
+    </div>
+</body>
+
+@code {
+    private string generatedStream;
+    private string inputText;
+    private double temperatureValue = 1.0;
+    private int minLength = 10;
+    private int maxLength = 100;
+    private string API_NOVELAI = "https://api.novelai.net/";
+    private string API_KEY = "";
+    private string placeholder = "oRGZjZE7QO7ltvuvg3iR6YvkKwkikzbLk2vdveunPtJU-qc92h_jZBKGG-bRfVto";
+
+    private async Task AuthenticateAndLog()
+    {
+        try
+        {
+            // Replace "your_api_key" with your actual API key
+            await AuthService.AuthenticateAsync(API_KEY);
+            Console.WriteLine("Authentication successful");
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error during authentication: {ex.Message}");
+        }
+    }
+
+    private async Task GenerateStream()
+    {
+        generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);
+    }
+}

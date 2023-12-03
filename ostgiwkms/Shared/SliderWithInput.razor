@@ -1,0 +1,29 @@
+﻿<div>
+    <label for="slider">Slider:</label>
+    <input id="slider" type="range" min="@MinValue" max="@MaxValue" step="@Step" value="@SelectedValue" @oninput="SliderValueChanged" />
+
+    <label for="input">Value:</label>
+    <input id="input" type="number" min="@MinValue" max="@MaxValue" step="@Step" value="@SelectedValue" @oninput="InputValueChanged" />
+
+    <p>Selected Value: @SelectedValue</p>
+</div>
+
+@code {
+    [Parameter] public double MinValue { get; set; } = 0.0;
+    [Parameter] public double MaxValue { get; set; } = 100.0;
+    [Parameter] public double Step { get; set; } = 1.0;
+    [Parameter] public double SelectedValue { get; set; } = 50.0;
+
+    private void SliderValueChanged(ChangeEventArgs e)
+    {
+        SelectedValue = Convert.ToDouble(e.Value);
+    }
+
+    private void InputValueChanged(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value.ToString(), out double inputValue))
+        {
+            SelectedValue = inputValue;
+        }
+    }
+}
