@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/app.css" />
 </head>
 <body style="background-color:#2E006C; color:white; background-size:cover;">
-    <div>
+    <div class="novelaiBody">
         <h3>Settings</h3>
         <div>
             <h3>Temperature</h3>
@@ -22,22 +22,22 @@
             <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
         </div>
 
-        <h3>Text Input</h3>
-        <div style="padding-right: 50px;">
-            <label for="textbox">Enter Prompt:</label>
-            <input class="textBox" id="textbox" type="text" @bind="inputText" />
-            <button class="generateStream" @onclick="GenerateStream">Generate</button>
-        </div>
-
         <p>Your prompt: @inputText</p>
         <p>Response: "@generatedStream"</p>
+
+        <h3>Text Input</h3>
+        <div class="textinput">
+            <label for="textbox">Enter Prompt:</label>
+            <input type="text" @bind="inputText" placeholder="Type something...">
+            <button class="generateStream" @onclick="GenerateStream">Generate</button>
+        </div>
     </div>
 </body>
 
 @code {
     private string generatedStream;
-    private string inputText;
-    private double temperatureValue = 1.0;
+    private string inputText { get; set; }
+    private double temperatureValue = 0.25;
     private int minLength = 10;
     private int maxLength = 100;
     private string API_NOVELAI = "https://api.novelai.net/";
