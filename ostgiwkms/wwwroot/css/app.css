@@ -1,11 +1,23 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-.generateStream {
-    text-align: center;
+.novelaiBody {
+    font-family: 'Arial', sans-serif; /* Use a font similar to the one on OpenAI's site */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+    
+    height: 100vh;
+    background-color: #f5f5f5;
 }
 
-.novelaiBody {
-    background-color: darkviolet;
+.generateStream {
+    padding: 8px 15px;
+    background-color: #4CAF50; /* Use a color similar to OpenAI's site */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #hiddenSetting {
@@ -22,18 +34,22 @@
 .textinput {
     position: fixed;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Set a background color for the text bar */
     padding: 10px;
-    background-color: #f0f0f0;
-    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
 }
 
     .textinput input {
-        width: 100%;
+        flex: 1;
         padding: 8px;
-        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 8px;
     }
 
 .textbox {

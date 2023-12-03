@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/app.css" />
 </head>
-<body style="background-color:#2E006C; color:white; background-size:cover;">
-    <div class="novelaiBody">
+<body class="novelaiBody">
+    <div class="novelai">
         <div class="hoverTrigger" style="position: relative; display: inline-block;">
             Settings
             <div class="hiddenSettings" style="display: none; position: absolute; background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; z-index: 1">
@@ -49,10 +49,9 @@
 
         <div style="margin: 100px"></div>
 
-        <h3>Text Input</h3>
         <div class="textinput">
             <label for="textbox">Enter Prompt:</label>
-            <input type="text" @bind="inputText" placeholder="Type something...">
+            <input class="novelaiInput" type="text" @bind="inputText" placeholder="Type something...">
             <button class="generateStream" @onclick="GenerateStream">Generate</button>
         </div>
     </div>
@@ -82,14 +81,8 @@
         }
     }
 
-    /*private async Task GenerateStream()
-    {
-        generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);
-    }*/
-
     private async Task GenerateStream()
     {
-        generatedStream = await GenerationRequest.GenerateNovel(inputText, temperatureValue, minLength, maxLength);
+        generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);
     }
-
 }
