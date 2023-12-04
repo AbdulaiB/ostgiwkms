@@ -71,6 +71,21 @@
         }
     }
 
+    private void GetTemperature()
+    {
+        temperatureValue = sService.TemperatureValue;
+    }
+
+    private void GetMinLength()
+    {
+        temperatureValue = sService.MinLengthValue;
+    }
+
+    private void GetMaxLength()
+    {
+        temperatureValue = sService.MaxLengthValue;
+    }
+
     private async Task GenerateStream()
     {
         generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);

@@ -1,4 +1,6 @@
-﻿<div>
+﻿@inject ostgiwkms.Services.SettingsService sService
+
+<div>
     <label for="slider">Slider:</label>
     <input id="slider" type="range" min="@MinValue" max="@MaxValue" step="@Step" value="@SelectedValue" @oninput="SliderValueChanged" />
 
