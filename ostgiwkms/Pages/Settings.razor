@@ -8,13 +8,13 @@
 
 <h3>Temperature</h3>
 
-<SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" bind-Value="@sService.TemperatureValue" />
+<SliderWithInput MinValue="0.1" MaxValue="2.0" Step="0.01" SelectedValue="@sService.TemperatureValue" />
 
 <h3>Minimum Length</h3>
-<SliderWithInput MinValue="0" MaxValue="500" Step="1" bind-Value="@sService.MinLengthValue" />
+<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@sService.MinLengthValue" />
 
 <h3>Maximum Length</h3>
-<SliderWithInput MinValue=minLength MaxValue="1000" Step="1" bind-Value="@sService.MaxLengthValue" />
+<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@sService.MaxLengthValue" />
 
 <button @onclick="SaveSettings">Save Settings</button>
 @code {
