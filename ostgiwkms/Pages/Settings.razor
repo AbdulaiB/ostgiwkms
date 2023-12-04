@@ -22,6 +22,11 @@
     private int minLength = 200;
     private int maxLength = 500;
 
+    private void SettingsValue()
+    {
+        Console.WriteLine($"Saving settings: Temperature={sService.TemperatureValue}, MinLength={sService.MinLengthValue}, MaxLength={sService.MaxLengthValue}");
+    }
+
     private void SaveSettings()
     {
         NavigationManager.NavigateTo("/Generate-Novel-Stream");
