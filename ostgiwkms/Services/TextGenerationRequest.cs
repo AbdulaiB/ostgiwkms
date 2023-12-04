@@ -67,12 +67,21 @@ namespace ostgiwkms.Services
                     temperature = _temperature,
                     min_length = _min_length,
                     max_length = _max_length,
+                    top_a = 0.1,
+                    top_k = 15,
+                    top_p = 0.85,
+                    phrase_rep_pen = "aggressive",
+                    tail_free_sampling = 0.915,
+                    repetition_penalty = 2.8,
+                    repetition_penalty_range = 2048,
+                    repetition_penalty_slope = 0.02,
+                    repetition_penalty_frequency = 0.02,
+                    repetition_penalty_presence = 1,
                     no_repeat_ngram_size = 30,
                     num_return_sequences = 10,
-                    repetition_penalty = 2.8,
                     num_logprobs = 0,
                     generate_until_sentence = true,
-                    return_full_text = false
+                    return_full_text = true
                 }
             };
             /*
