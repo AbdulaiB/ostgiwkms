@@ -11,20 +11,9 @@
 </head>
 <body class="novelaiBody">
     <div class="novelai">
-        <p>Temperature from settings: @sService.TemperatureValue</p>
+        <p>Temperature from settings: @temperatureValue</p>
         <button id="hideButton">Hide Settings</button>
-        <div class="elementToHide">
-
-            <h3>Temperature</h3>
-
-            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@sService.TemperatureValue" />
-
-            <h3>Minimum Length</h3>
-            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@sService.MinLengthValue" />
-
-            <h3>Maximum Length</h3>
-            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@sService.MaxLengthValue" />
-        </div>
+        
         <script>
             document.getElementById('hideButton').addEventListener('click', function () {
                 document.querySelector('.elementToHide').classList.toggle('hide-element');
@@ -48,14 +37,15 @@
 </body>
 
 @code {
+
     private string generatedStream;
     private string inputText { get; set; }
-    private double temperatureValue = 1.35;
-    private int minLength = 1500;
-    private int maxLength = 2048;
     private string API_NOVELAI = "https://api.novelai.net/";
     private string API_KEY = "";
     private string placeholder = "oRGZjZE7QO7ltvuvg3iR6YvkKwkikzbLk2vdveunPtJU-qc92h_jZBKGG-bRfVto";
+    [Parameter] public double temperatureValue { get; set; }
+    [Parameter] public int minLength { get; set; }
+    [Parameter] public int maxLength { get; set; }
 
     private async Task AuthenticateAndLog()
     {
@@ -71,19 +61,9 @@
         }
     }
 
-    private void GetTemperature()
+    protected override void OnInitialized()
     {
-        temperatureValue = sService.TemperatureValue;
-    }
-
-    private void GetMinLength()
-    {
-        temperatureValue = sService.MinLengthValue;
-    }
-
-    private void GetMaxLength()
-    {
-        temperatureValue = sService.MaxLengthValue;
+        (temperatureValue, minLength, maxLength) = sService.GetSettingsInputs();
     }
 
     private async Task GenerateStream()

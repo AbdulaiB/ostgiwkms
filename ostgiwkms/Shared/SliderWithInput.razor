@@ -19,6 +19,7 @@
     private void SliderValueChanged(ChangeEventArgs e)
     {
         SelectedValue = Convert.ToDouble(e.Value);
+        sService.SaveSettingsValue(Step, (int)MinValue, (int)MaxValue);
     }
 
     private void InputValueChanged(ChangeEventArgs e)
@@ -26,6 +27,7 @@
         if (double.TryParse(e.Value.ToString(), out double inputValue))
         {
             SelectedValue = inputValue;
+            sService.SaveSettingsValue(Step, (int)MinValue, (int)MaxValue);
         }
     }
 }

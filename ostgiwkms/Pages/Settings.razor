@@ -8,27 +8,24 @@
 
 <h3>Temperature</h3>
 
-<SliderWithInput MinValue="0.1" MaxValue="2.0" Step="0.01" SelectedValue="@sService.TemperatureValue" />
+<SliderWithInput MinValue="0.1" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
 
 <h3>Minimum Length</h3>
-<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@sService.MinLengthValue" />
+<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@minLength" />
 
 <h3>Maximum Length</h3>
-<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@sService.MaxLengthValue" />
+<SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@maxLength" />
 
 <button @onclick="SaveSettings">Save Settings</button>
 @code {
-    private double temperatureValue = 1.0;
-    private int minLength = 200;
-    private int maxLength = 500;
-
-    private void SettingsValue()
-    {
-        Console.WriteLine($"Saving settings: Temperature={sService.TemperatureValue}, MinLength={sService.MinLengthValue}, MaxLength={sService.MaxLengthValue}");
-    }
+    [Parameter] public double temperatureValue { get; set; } = 1.0;
+    [Parameter] public int minLength { get; set; } = 100;
+    [Parameter] public int maxLength { get; set; } = 1000;
 
     private void SaveSettings()
     {
-        NavigationManager.NavigateTo("/Generate-Novel-Stream");
+        sService.SaveSettingsValue(temperatureValue, minLength, maxLength);
+
+        NavigationManager.NavigateTo($"/Generate-Novel-Stream");
     }
 }
