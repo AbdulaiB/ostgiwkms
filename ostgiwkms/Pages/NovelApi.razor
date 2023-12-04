@@ -10,33 +10,22 @@
 </head>
 <body class="novelaiBody">
     <div class="novelai">
-        <input type="checkbox" id="hideElementCheckbox">
-        <label for="hideElementCheckbox" id="hideElementLabel">Settings</label>
+        <button id="hideButton">Hide Settings</button>
         <div class="elementToHide">
-            <p>
-                <h3>Temperature</h3>
 
-                <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+            <h3>Temperature</h3>
 
-                <h3>Minimum Length</h3>
-                <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
 
-                <h3>Maximum Length</h3>
-                <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
-            </p>
+            <h3>Minimum Length</h3>
+            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+
+            <h3>Maximum Length</h3>
+            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
         </div>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var hoverTrigger = document.querySelector('.hoverTrigger');
-                var hiddenContent = document.querySelector('.hiddenSettings');
-
-                hoverTrigger.addEventListener('mouseover', function () {
-                    hiddenContent.style.display = 'block';
-                });
-
-                hoverTrigger.addEventListener('mouseout', function () {
-                    hiddenContent.style.display = 'none';
-                });
+            document.getElementById('hideButton').addEventListener('click', function () {
+                document.querySelector('.elementToHide').classList.toggle('hide-element');
             });
         </script>
 

@@ -1,20 +1,29 @@
 ﻿@page "/Settings"
 @using System.Text.Json
 @using System.Text.Json.Serialization
+@inject ostgiwkms.Services.SettingsService sService
+@inject NavigationManager NavigationManager
 
 <h3>Settings</h3>
 
 <h3>Temperature</h3>
 
-<SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+<SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" @bind="sService.TemperatureValue" />
 
 <h3>Minimum Length</h3>
-<SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+<SliderWithInput MinValue="0" MaxValue="500" Step="1" @bind="sService.MinLengthValue" />
 
 <h3>Maximum Length</h3>
-<SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+<SliderWithInput MinValue=minLength MaxValue="1000" Step="1" @bind="sService.MaxLengthValue" />
+
+<button @onclick="SaveSettings"></button>
 @code {
     private double temperatureValue = 1.0;
     private int minLength = 200;
     private int maxLength = 500;
+
+    public void SaveSettings()
+    {
+        NavigationManager.NavigateTo("/Generate-Novel-Stream");
+    }
 }

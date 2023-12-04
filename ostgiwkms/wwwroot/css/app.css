@@ -1,7 +1,7 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 .novelaiBody {
-    font-family: 'Arial', sans-serif; /* Use a font similar to the one on OpenAI's site */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,28 +16,26 @@
     border: 1px solid #ccc;
 }
 
-#hideElementCheckbox:checked + #hideElementLabel + .element-to-hide {
+.hide-element {
     display: none;
 }
 
-.generateStream {
+#hideButton {
     padding: 8px 15px;
-    background-color: #4CAF50; /* Use a color similar to OpenAI's site */
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-#hiddenSetting {
-    display: none;
-}
-
-#hoverTrigger:hover + #hiddenSetting {
-    display: block
-}
-#hoverTrigger:hover ~ #hiddenSetting {
-    display: none
+.generateStream {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .textinput {
