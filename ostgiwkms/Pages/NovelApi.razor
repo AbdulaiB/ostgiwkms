@@ -10,21 +10,20 @@
 </head>
 <body class="novelaiBody">
     <div class="novelai">
-        <div class="hoverTrigger" style="position: relative; display: inline-block;">
-            Settings
-            <div class="hiddenSettings" style="display: none; position: absolute; background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; z-index: 1">
-                <p>
-                    <h3>Temperature</h3>
+        <input type="checkbox" id="hideElementCheckbox">
+        <label for="hideElementCheckbox" id="hideElementLabel">Settings</label>
+        <div class="elementToHide">
+            <p>
+                <h3>Temperature</h3>
 
-                    <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+                <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
 
-                    <h3>Minimum Length</h3>
-                    <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+                <h3>Minimum Length</h3>
+                <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
 
-                    <h3>Maximum Length</h3>
-                    <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
-                </p>
-            </div>
+                <h3>Maximum Length</h3>
+                <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+            </p>
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {

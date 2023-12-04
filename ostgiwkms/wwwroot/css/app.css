@@ -5,10 +5,19 @@
     margin: 0;
     padding: 0;
     display: flex;
-    
-    
     height: 100vh;
     background-color: #f5f5f5;
+}
+
+.element-to-hide {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+
+#hideElementCheckbox:checked + #hideElementLabel + .element-to-hide {
+    display: none;
 }
 
 .generateStream {
