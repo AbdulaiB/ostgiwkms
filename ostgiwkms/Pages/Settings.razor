@@ -8,21 +8,21 @@
 
 <h3>Temperature</h3>
 
-<SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" @bind="sService.TemperatureValue" />
+<SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
 
 <h3>Minimum Length</h3>
-<SliderWithInput MinValue="0" MaxValue="500" Step="1" @bind="sService.MinLengthValue" />
+<SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
 
 <h3>Maximum Length</h3>
-<SliderWithInput MinValue=minLength MaxValue="1000" Step="1" @bind="sService.MaxLengthValue" />
+<SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
 
-<button @onclick="SaveSettings"></button>
+<button @onclick="SaveSettings">Save Settings</button>
 @code {
     private double temperatureValue = 1.0;
     private int minLength = 200;
     private int maxLength = 500;
 
-    public void SaveSettings()
+    private void SaveSettings()
     {
         NavigationManager.NavigateTo("/Generate-Novel-Stream");
     }

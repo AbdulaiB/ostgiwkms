@@ -1,6 +1,7 @@
 ﻿@page "/Generate-Novel-Stream"
 @inject ostgiwkms.Services.TextGenerationRequest GenerationRequest
 @inject ostgiwkms.Services.AuthService AuthService
+@inject ostgiwkms.Services.SettingsService sService
 
 <head>
     <meta charset="utf-8" />
@@ -10,6 +11,7 @@
 </head>
 <body class="novelaiBody">
     <div class="novelai">
+        <p>Temperature from settings: @sService.TemperatureValue</p>
         <button id="hideButton">Hide Settings</button>
         <div class="elementToHide">
 

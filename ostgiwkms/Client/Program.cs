@@ -18,6 +18,8 @@ namespace ostgiwkms
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<ApiService>();
             builder.Services.AddScoped<TextGenerationRequest>();
+            builder.Services.AddScoped<SettingsService>();
+
 
             await builder.Build().RunAsync();
         }
