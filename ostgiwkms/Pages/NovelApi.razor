@@ -11,19 +11,19 @@
 </head>
 <body class="novelaiBody">
     <div class="novelai">
-        <p>Temperature from settings: @temperatureValue</p>
+        <p>Temperature from settings: @Math.Round(sService.TemperatureValue, 2)</p>
         <button id="hideButton">Hide Settings</button>
         <div class="elementToHide">
 
             <h3>Temperature</h3>
 
-            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
+            <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@sService.TemperatureValue" />
 
             <h3>Minimum Length</h3>
-            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@sService.MinLengthValue" />
 
             <h3>Maximum Length</h3>
-            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@sService.MaxLengthValue" />
         </div>
         <script>
             document.getElementById('hideButton').addEventListener('click', function () {
