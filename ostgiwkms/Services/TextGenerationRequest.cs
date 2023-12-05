@@ -54,6 +54,7 @@ namespace ostgiwkms.Services
         {
             string output = "";
             string apiURL = "https://api.novelai.net/ai/generate-stream";
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InE4TEFVd1YzQkZMMXdMZW5COGl2eCIsIm5jIjoiSVVhb19jVmdJMGtWMThjZ1N2bXZpIiwiaWF0IjoxNzAxNzkzNzgwLCJleHAiOjE3MDQzODU3ODB9.0P6pLkLqtdCNv7yuGhBlKcD8upS6GQVhbMBFhPKnb6E");
 
             //Preparing data to be sent to the api
             var requestData = new
@@ -115,6 +116,7 @@ namespace ostgiwkms.Services
                 // Handling the response
                 if (response.IsSuccessStatusCode)
                 {
+
                     var responseData = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Response Data: {responseData}");
 
