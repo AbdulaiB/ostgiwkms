@@ -2,6 +2,8 @@
 @inject ostgiwkms.Services.TextGenerationRequest GenerationRequest
 @inject ostgiwkms.Services.AuthService AuthService
 @inject ostgiwkms.Services.SettingsService sService
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+
 
 <head>
     <meta charset="utf-8" />
@@ -44,6 +46,8 @@
             <input class="novelaiInput" type="text" @bind="inputText" placeholder="Type something...">
             <button class="generateStream" @onclick="GenerateStream">Generate</button>
         </div>
+
+        <button class="generateStream" @onclick="NavigateToPayment">Payment</button>
     </div>
 </body>
 
@@ -80,5 +84,13 @@
     private async Task GenerateStream()
     {
         generatedStream = await GenerationRequest.GenerateNovelStream(inputText, temperatureValue, minLength, maxLength);
+    }
+
+    private async Task NavigateToPayment()
+    {
+        // Perform asynchronous operation here if needed
+
+        // Navigate after the operation is complete
+        NavigationManager.NavigateTo("https://paypal.me/abdulaibah2022?country.x=US&locale.x=en_US");
     }
 }
