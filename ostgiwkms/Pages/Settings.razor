@@ -18,9 +18,9 @@
 
 <button @onclick="SaveSettings">Save Settings</button>
 @code {
-    [Parameter] public double temperatureValue { get; set; } = 1.0;
-    [Parameter] public int minLength { get; set; } = 100;
-    [Parameter] public int maxLength { get; set; } = 1000;
+    [Parameter] public double temperatureValue { get; set; } = 1.35;
+    [Parameter] public int minLength { get; set; } = 2000;
+    [Parameter] public int maxLength { get; set; } = 2048;
 
     private void SaveSettings()
     {
