@@ -2,7 +2,7 @@
 
 <div>
     <label for="slider">Slider:</label>
-    <input id="slider" type="range" min="@MinValue" max="@MaxValue" step="@Step" value="@SelectedValue" @oninput="SliderValueChanged" />
+    <input id="slider" type="range" min="@MinValue" max="@MaxValue" step="@Step" @bind="@SelectedValue" @oninput="SliderValueChanged" />
 
     <label for="input">Value:</label>
     <input id="input" type="number" min="@MinValue" max="@MaxValue" step="@Step" value="@SelectedValue" @oninput="InputValueChanged" />
@@ -29,5 +29,16 @@
             SelectedValue = inputValue;
             sService.SaveSettingsValue(Step, (int)MinValue, (int)MaxValue);
         }
+    }
+
+    private void RetrieveSettings()
+    {
+        (Step, MinValue, MaxValue) = sService.GetSettingsInputs();
+        Console.WriteLine("Settings retrieved successfully!");
+    }
+
+    private void UpdateSettings()
+    {
+        Console.WriteLine($"Value changed to: {SelectedValue}");
     }
 }
