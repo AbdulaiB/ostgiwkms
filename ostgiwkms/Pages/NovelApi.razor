@@ -20,10 +20,10 @@
             <SliderWithInput MinValue="0.0" MaxValue="2.0" Step="0.01" SelectedValue="@temperatureValue" />
 
             <h3>Minimum Length</h3>
-            <SliderWithInput MinValue="0" MaxValue="500" Step="1" SelectedValue="@minLength" />
+            <SliderWithInput MinValue="0" MaxValue="2048" Step="1" SelectedValue="@minLength" />
 
             <h3>Maximum Length</h3>
-            <SliderWithInput MinValue=minLength MaxValue="1000" Step="1" SelectedValue="@maxLength" />
+            <SliderWithInput MinValue=minLength MaxValue="2048" Step="1" SelectedValue="@maxLength" />
         </div>
         <script>
             document.getElementById('hideButton').addEventListener('click', function () {
